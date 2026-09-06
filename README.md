@@ -1,6 +1,6 @@
 # NYC Citi Bike Time-Series Analytics
 
-Time-series forecasting and business analytics for NYC Citi Bike demand using ARIMA, SARIMAX, Prophet, weather data, and Power BI.
+Time-series forecasting and business analytics for NYC Citi Bike demand using ARIMA, Auto-ARIMA, SARIMAX, Prophet, weather data, and Power BI.
 
 ## Overview
 
@@ -10,21 +10,29 @@ This repository presents the practical analytical work developed for my 2021 M.S
 
 The thesis was completed at **TH Köln University of Applied Sciences** in September 2021.
 
-The project investigates how business analytics, open data, and time-series forecasting can support bike-sharing operations and planning. The analysis focuses on NYC Citi Bike usage and combines trip records with weather and operational inspection data.
+The project investigates how business analytics, open data, and time-series forecasting can support bike-sharing operations and decision-making. The analysis focuses on NYC Citi Bike activity during 2020 and combines bike-sharing data with weather information and operational inspection data.
+
+The work includes exploratory analysis, station-level analytics, time-series diagnostics, forecasting, model comparison, operational analysis, and Power BI visualization.
+
+---
 
 ## Project Objectives
 
 The main objectives of the project were to:
 
-- Perform descriptive and exploratory analysis of bike-sharing data
+- Perform descriptive and exploratory analysis of bike-sharing activity
 - Investigate daily, monthly, seasonal, and station-level usage patterns
-- Examine relationships between weather conditions and bike usage
-- Analyze trip duration and station demand
-- Evaluate stationarity and temporal patterns
-- Develop station-level time-series forecasting models
-- Compare different forecasting approaches
-- Predict overall daily and weekday bike usage
-- Prepare analytical outputs for business-intelligence visualization
+- Examine the relationship between relative humidity and bike usage
+- Analyze trip duration and station activity
+- Examine stationarity and temporal dependencies in the time series
+- Develop station-level forecasting models
+- Compare alternative time-series forecasting approaches
+- Investigate overall daily bike-usage forecasting
+- Analyze weekday usage patterns
+- Evaluate station-level activity through a business-intelligence environment
+- Use Power BI forecasting and visualization to support management-oriented interpretation
+
+---
 
 ## Data
 
@@ -34,9 +42,9 @@ The primary analytical period was:
 
 The project used three main categories of data.
 
-### NYC Citi Bike Trip Data
+### 1. NYC Citi Bike Trip Data
 
-Citi Bike trip records were used to investigate:
+NYC Citi Bike trip records were used to investigate:
 
 - Daily and monthly bike usage
 - Trip duration
@@ -44,39 +52,50 @@ Citi Bike trip records were used to investigate:
 - Seasonal usage patterns
 - Ridership characteristics
 - Time-series behavior
+- Overall bike-usage patterns
 
-### Weather Data
+### 2. Weather Data
 
-Weather information, particularly **relative humidity**, was integrated with bike-sharing data to investigate relationships between environmental conditions and bike usage.
+Weather information, particularly **average daily relative humidity**, was incorporated into the analysis to investigate the relationship between environmental conditions and bike-sharing activity.
 
-Relative humidity was also explored as an exogenous variable in the time-series analysis.
+Relative humidity was also explored as an exogenous variable in the time-series modeling.
 
-### Bike-Sharing Inspection Data
+### 3. Bike-Sharing Inspection Data
 
-Operational inspection data was analyzed to investigate factors associated with bike-sharing operations and support the business-analytics component of the study.
+Operational inspection data was analyzed to investigate external factors associated with bike-sharing operations and to support the business-analytics component of the project.
 
-The complete raw datasets are not stored in this repository because they consist of multiple large files.
+### Why the Raw Data Is Not Included
 
-See [`data/README.md`](data/README.md) for additional information.
+The complete 2020 dataset consists of multiple large source files and is therefore not stored directly in this repository.
+
+The repository instead preserves the analytical workflow, selected results, and documentation.
+
+See [`data/README.md`](data/README.md) for additional information about the datasets.
+
+---
 
 ## Analytical Workflow
 
-The practical analysis includes:
+The practical workflow includes:
 
-1. Data ingestion and preprocessing
-2. Monthly and seasonal aggregation
-3. Exploratory data analysis
-4. Station-level usage analysis
-5. Trip-duration analysis
-6. Weather-data integration
-7. Rolling statistics and time-series visualization
-8. Stationarity testing
-9. Differencing
-10. ACF and PACF analysis
-11. Time-series model development
-12. Forecast evaluation and model comparison
-13. Operational inspection analysis
-14. Preparation of analytical outputs for Power BI
+1. Data collection and preprocessing
+2. Data cleaning and transformation
+3. Monthly and seasonal aggregation
+4. Exploratory and descriptive analysis
+5. Weather-data integration
+6. Station-level analysis
+7. Trip-duration analysis
+8. Rolling statistics and time-series visualization
+9. Stationarity testing
+10. Differencing
+11. ACF and PACF analysis
+12. Time-series model development
+13. Forecast evaluation and model comparison
+14. Overall bike-usage forecasting
+15. Operational inspection analysis
+16. Power BI visualization and forecasting
+
+---
 
 ## Time-Series Analysis
 
@@ -88,39 +107,47 @@ Rolling statistics and differencing were also explored before developing forecas
 
 ### ACF and PACF Analysis
 
-Autocorrelation Function (**ACF**) and Partial Autocorrelation Function (**PACF**) analysis were used to investigate temporal dependencies and support time-series model development.
+The **Autocorrelation Function (ACF)** and **Partial Autocorrelation Function (PACF)** were used to investigate temporal dependencies and support the development of the time-series models.
+
+---
 
 ## Forecasting Models
 
-Several forecasting approaches were explored and compared.
+Several forecasting approaches were explored during the project.
 
 ### ARIMA
 
-**Autoregressive Integrated Moving Average (ARIMA)** models were used for time-series forecasting after examining stationarity and autocorrelation characteristics.
+**Autoregressive Integrated Moving Average (ARIMA)** models were used for time-series forecasting after examining stationarity and temporal dependencies in the data.
 
 ### Auto-ARIMA
 
-**Auto-ARIMA** was explored to support model-order selection and forecasting experiments.
+**Auto-ARIMA** was explored to support automated model-order selection and forecasting experiments.
 
 ### SARIMAX
 
-**SARIMAX** was investigated with relative humidity as an exogenous variable, allowing weather information to be incorporated into the forecasting process.
+**Seasonal Autoregressive Integrated Moving Average with Exogenous Regressors (SARIMAX)** was investigated with relative humidity as an exogenous variable.
+
+This allowed weather information to be considered alongside the historical bike-usage time series.
 
 ### Prophet
 
-**Prophet** was also evaluated as an alternative forecasting approach for bike-usage time series.
+**Prophet** was evaluated as an alternative forecasting approach for bike-usage time series, particularly in the presence of seasonal behavior.
 
-### Exponential Smoothing and Power BI
+### Forecast Evaluation
 
-The project additionally explored forecasting and trend analysis within the business-intelligence workflow, including exponential smoothing and visualization in **Power BI**.
+The forecasting approaches were compared using measures including **Root Mean Squared Error (RMSE)**, while model characteristics were also examined using criteria such as the **Akaike Information Criterion (AIC)**.
 
-## Selected Results
+---
 
-The figures below are selected outputs from the original 2021 analytical workflow. Additional figures are available in the [`results/`](results/) directory.
+## Selected Time-Series Results
+
+Selected outputs from the original 2021 analytical workflow are displayed below.
+
+Additional figures are available in the [`results/`](results/) directory.
 
 ### ACF and PACF Analysis
 
-ACF and PACF were used to investigate the temporal characteristics of the time series.
+ACF and PACF analysis was used to examine the temporal characteristics of the trip-duration time series.
 
 ![ACF and PACF Analysis](results/01_acf_pacf_trip_duration.png)
 
@@ -132,7 +159,7 @@ ARIMA was applied to station-level time-series forecasting.
 
 ### Station-Level Auto-ARIMA Forecast
 
-Auto-ARIMA was explored as an alternative approach to model selection and forecasting.
+Auto-ARIMA was explored as an alternative approach to model selection and station-level forecasting.
 
 ![Auto-ARIMA Station Forecast](results/04_auto_arima_station_forecast.png)
 
@@ -150,16 +177,79 @@ Monthly aggregation was used to examine changes in Citi Bike demand throughout t
 
 ### Overall Bike-Usage Forecast
 
-The analysis also investigated forecasting of overall bike usage.
+The project also investigated forecasting of overall daily bike usage.
 
 ![Overall Bike Usage Forecast](results/11_arima_overall_usage_forecast.png)
 
-More analytical outputs are available in the [`results/`](results/) folder.
+All selected Python/time-series figures are available in the [`results/`](results/) directory.
+
+---
+
+## Power BI Business Analytics
+
+Power BI was used to complement the Python-based time-series analysis with a business-intelligence perspective.
+
+The BI component was designed to provide a more interactive, management-oriented view of station activity, bike usage, geographic information, relative humidity, operational patterns, and forecasting.
+
+### Station-Based Operational Dashboard
+
+The station-based dashboard combined information including:
+
+- Bike-sharing stations
+- Daily bike-usage activity
+- Station operating patterns
+- Geographic station locations
+- Relative humidity
+- Monthly ridership
+- Time-series forecasting
+
+It was designed to support the identification of station-level operational patterns and interruptions and to provide a visual basis for investigating stations that may require additional operational attention.
+
+![Power BI Station Dashboard](dashboard/powerbi_station_dashboard.png)
+
+### Exponential-Smoothing Forecasting
+
+The project explored **exponential smoothing within Power BI** as part of the evaluation of station-based analytics.
+
+The BI forecasting component was used to visualize historical behavior and potential future patterns while providing a more accessible presentation for business stakeholders.
+
+### Weekday Usage and Forecasting
+
+The analysis was also extended to weekday-based bike-usage patterns.
+
+The original 2020 analysis found that total bike-usage hours tended to be higher toward the weekend. **Saturday recorded the highest total usage hours at approximately 1.3 million hours**, followed by Sunday at approximately 1.2 million hours.
+
+![Power BI Weekday Forecast](dashboard/powerbi_weekday_forecast.png)
+
+Additional information about the Power BI outputs is available in the [`dashboard/`](dashboard/) directory.
+
+---
+
+## Business Analytics Perspective
+
+The project was developed not only as a forecasting exercise but also as a business-analytics investigation.
+
+Station-level analysis was used to investigate issues such as:
+
+- Operational interruptions
+- Stations with incomplete operating periods
+- Station usage patterns
+- Potential station rebalancing considerations
+- Geographic identification of affected stations
+- Monthly business activity
+- Weather-related patterns
+- Inspection-related operational factors
+- Overall and station-level forecasting
+
+The objective was to demonstrate how open data, statistical analysis, forecasting, and business-intelligence tools could be combined to provide information useful for bike-sharing operational decision-making.
+
+---
 
 ## Repository Structure
 
 ```text
 NYC-CitiBike-Time-Series-Analytics/
+│
 ├── README.md
 ├── requirements.txt
 ├── .gitignore
@@ -171,34 +261,44 @@ NYC-CitiBike-Time-Series-Analytics/
 │   ├── README.md
 │   └── CitiBike_Time_Series_Analytics.ipynb
 │
-└── results/
+├── results/
+│   ├── README.md
+│   ├── 01_acf_pacf_trip_duration.png
+│   ├── 02_acf_pacf_stationary_trip_duration.png
+│   ├── 03_arima_station_forecast.png
+│   ├── 04_auto_arima_station_forecast.png
+│   ├── 05_prophet_station_forecast.png
+│   ├── 06_monthly_bike_demand_2020.png
+│   ├── 07_auto_arima_monthly_demand_forecast.png
+│   ├── 08_prophet_monthly_demand_forecast.png
+│   ├── 09_auto_arima_overall_usage_forecast.png
+│   ├── 10_prophet_overall_usage_forecast.png
+│   └── 11_arima_overall_usage_forecast.png
+│
+└── dashboard/
     ├── README.md
-    ├── 01_acf_pacf_trip_duration.png
-    ├── 02_acf_pacf_stationary_trip_duration.png
-    ├── 03_arima_station_forecast.png
-    ├── 04_auto_arima_station_forecast.png
-    ├── 05_prophet_station_forecast.png
-    ├── 06_monthly_bike_demand_2020.png
-    ├── 07_auto_arima_monthly_demand_forecast.png
-    ├── 08_prophet_monthly_demand_forecast.png
-    ├── 09_auto_arima_overall_usage_forecast.png
-    ├── 10_prophet_overall_usage_forecast.png
-    └── 11_arima_overall_usage_forecast.png
+    ├── powerbi_station_dashboard.png
+    └── powerbi_weekday_forecast.png
 ```
+
+---
 
 ## Main Notebook
 
-The practical implementation is available here:
+The practical implementation is available in:
 
 [`notebooks/CitiBike_Time_Series_Analytics.ipynb`](notebooks/CitiBike_Time_Series_Analytics.ipynb)
 
-The notebook contains a cleaned archival version of the practical analysis performed for the original 2021 thesis project.
+The notebook is a cleaned archival version of the practical analytical work developed for the original 2021 thesis.
+
+---
 
 ## Technologies
 
 The project uses tools and libraries including:
 
 - Python
+- Jupyter Notebook
 - Pandas
 - NumPy
 - Matplotlib
@@ -208,32 +308,37 @@ The project uses tools and libraries including:
 - pmdarima
 - Prophet
 - Plotly
-- Jupyter Notebook
 - Power BI
+
+---
 
 ## Installation
 
 Python dependencies are listed in `requirements.txt`.
 
-To install them in a local environment:
+To install the required packages in a local environment:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Reproducibility Note
+---
+
+## Reproducibility and Compatibility Note
 
 This repository preserves analytical work originally completed in **2021**.
 
-Some Python libraries and APIs used in the original notebook have since changed or been deprecated. Examples include:
+Some Python libraries and APIs used in the original implementation have changed or been deprecated since the project was completed. Examples include:
 
 - The former `fbprophet` package, now distributed as `prophet`
 - Legacy Statsmodels ARIMA APIs
 - `DataFrame.append`, which has been removed from recent versions of Pandas
 
-Minor compatibility updates may therefore be required to rerun every notebook cell in a modern Python environment.
+Minor compatibility modifications may therefore be necessary to execute every notebook cell in a current Python environment.
 
-The repository preserves the original analytical methodology and results rather than presenting recomputed results as part of the original thesis.
+The purpose of this repository is to preserve and present the original analytical methodology and results rather than to recompute the historical analysis using newer software versions.
+
+---
 
 ## Thesis Information
 
@@ -242,10 +347,14 @@ The repository preserves the original analytical methodology and results rather 
 **Degree:** Master of Science (M.Sc.) Informatik-Computer Science  
 **Institution:** TH Köln University of Applied Sciences  
 **Institute:** Institute of Informatics  
-**Year:** 2021
+**Completed:** September 2021
 
-## Portfolio Note
+---
+
+## Archival and Portfolio Note
 
 The original M.Sc. thesis and practical analysis were completed in **2021**.
 
-This repository was subsequently curated for portfolio presentation. The repository organization and documentation have been improved while preserving the original analytical work and historical context.
+This repository was subsequently curated for portfolio presentation. Repository organization, documentation, and presentation have been improved while preserving the methodology, analytical outputs, and historical context of the original work.
+
+The results presented here should therefore be interpreted as outputs from the original 2021 study rather than newly recomputed benchmark results.
